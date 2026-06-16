@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>황민수 · 서유진 Wedding Invitation</title>
+  <meta name="description" content="2026년 8월 29일 저녁 6시, 루이비스컨벤션 B1층에서 황민수 · 서유진이 결혼합니다.">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta property="og:title" content="황민수 · 서유진 Wedding Invitation">
+  <meta property="og:description" content="2026.08.29 SAT 18:00 Louisvis Convention">
+  <meta property="og:image" content="assets/editorial-hero.png">
+  <style>
+    :root {
+      --black: #0d0d0c;
+      --ink: #171716;
+      --muted: #77736d;
+      --paper: #f6f2eb;
+      --ivory: #fffdf8;
+      --line: rgba(23, 23, 22, .18);
+      --white-line: rgba(255, 255, 255, .26);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--black);
+      font-family: "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+      line-height: 1.7;
+    }
+
+    a, button {
+      color: inherit;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .page {
+      max-width: 520px;
+      min-height: 100vh;
+      margin: 0 auto;
+      background: var(--paper);
+      overflow: hidden;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      padding: 22px 18px 24px;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      color: #fff;
+      background:
+        linear-gradient(180deg, rgba(0, 0, 0, .18), rgba(0, 0, 0, .08) 45%, rgba(0, 0, 0, .78)),
+        url("assets/editorial-hero.png") center / cover;
+    }
+
+    .nav {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+    }
+
+    .mark {
+      border: 1px solid var(--white-line);
+      padding: 7px 10px;
+      font-size: 10px;
+    }
+
+    .hero-center {
+      position: relative;
+      z-index: 1;
+      align-self: center;
+      padding-top: 48px;
+    }
+
+    .eyebrow {
+      margin: 0;
+      font-size: 11px;
+      letter-spacing: .24em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 14px 0 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(58px, 18vw, 96px);
+      line-height: .84;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .hero-bottom {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 18px;
+    }
+
+    .hero-meta {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 16px;
+      align-items: end;
+      border-top: 1px solid var(--white-line);
+      padding-top: 18px;
+    }
+
+    .hero-meta p {
+      margin: 0;
+      font-size: 13px;
+      color: rgba(255, 255, 255, .78);
+    }
+
+    .hero-meta strong {
+      display: block;
+      color: #fff;
+      font-size: 19px;
+      font-weight: 500;
+      letter-spacing: .08em;
+    }
+
+    .scroll {
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      writing-mode: vertical-rl;
+    }
+
+    .actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      border: 1px solid var(--white-line);
+      background: var(--white-line);
+    }
+
+    .actions a,
+    .actions button {
+      min-height: 46px;
+      border: 0;
+      background: rgba(0, 0, 0, .34);
+      backdrop-filter: blur(14px);
+      color: #fff;
+      font: inherit;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    section {
+      padding: 72px 22px;
+      background: var(--paper);
+    }
+
+    .kicker {
+      margin: 0 0 18px;
+      font-size: 11px;
+      letter-spacing: .26em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    h2 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 42px;
+      line-height: 1;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .lead {
+      margin: 28px 0 0;
+      color: #4c4944;
+      font-size: 16px;
+      word-break: keep-all;
+    }
+
+    .intro {
+      text-align: center;
+      background: var(--ivory);
+    }
+
+    .intro .lead {
+      max-width: 335px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .names {
+      margin-top: 42px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: .12em;
+    }
+
+    .names i {
+      width: 42px;
+      height: 1px;
+      background: var(--line);
+    }
+
+    .date-band {
+      background: var(--black);
+      color: #fff;
+    }
+
+    .date-row {
+      display: grid;
+      grid-template-columns: 86px 1fr;
+      gap: 24px;
+      border-top: 1px solid var(--white-line);
+      padding-top: 20px;
+    }
+
+    .date-num {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 64px;
+      line-height: .88;
+    }
+
+    .date-row p {
+      margin: 0;
+      color: rgba(255, 255, 255, .74);
+      font-size: 14px;
+    }
+
+    .count-grid {
+      margin-top: 34px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border: 1px solid var(--white-line);
+      border-left: 0;
+    }
+
+    .count {
+      min-height: 84px;
+      border-left: 1px solid var(--white-line);
+      display: grid;
+      place-items: center;
+      align-content: center;
+    }
+
+    .count strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 28px;
+      line-height: 1;
+      font-weight: 400;
+    }
+
+    .count span {
+      margin-top: 7px;
+      color: rgba(255, 255, 255, .56);
+      font-size: 10px;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+
+    .gallery {
+      padding-left: 0;
+      padding-right: 0;
+      background: var(--paper);
+    }
+
+    .gallery .kicker,
+    .gallery h2 {
+      padding-left: 22px;
+      padding-right: 22px;
+    }
+
+    .photo-stack {
+      margin-top: 30px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .photo {
+      min-height: 410px;
+      background:
+        linear-gradient(135deg, rgba(13, 13, 12, .2), rgba(246, 242, 235, .08)),
+        var(--image, url("assets/editorial-hero.png")) center / cover;
+      filter: grayscale(.95);
+    }
+
+    .photo.small {
+      min-height: 280px;
+    }
+
+    .photo:nth-child(1) { --image: url("assets/photo-1.jpg"); }
+    .photo:nth-child(2) { --image: url("assets/photo-2.jpg"); }
+    .photo:nth-child(3) { --image: url("assets/photo-3.jpg"); }
+
+    .location {
+      background: var(--ivory);
+    }
+
+    .info {
+      margin-top: 30px;
+      border-top: 1px solid var(--line);
+    }
+
+    .info-row {
+      display: grid;
+      grid-template-columns: 74px 1fr;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .info-row b {
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+    }
+
+    .info-row p {
+      margin: 0;
+      color: #4c4944;
+    }
+
+    .solid-actions {
+      margin-top: 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .solid-actions a,
+    .solid-actions button,
+    .copy-btn {
+      min-height: 48px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: #fff;
+      font: inherit;
+      font-size: 12px;
+      letter-spacing: .12em;
+      text-decoration: none;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .solid-actions .ghost {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .account {
+      background: #e8e1d6;
+    }
+
+    .account-card {
+      margin-top: 30px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      padding: 22px 0;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .account-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .account-card strong {
+      display: block;
+      margin-top: 3px;
+      font-size: 20px;
+      letter-spacing: .04em;
+    }
+
+    .copy-btn {
+      min-width: 74px;
+      min-height: 42px;
+    }
+
+    .account-number {
+      display: none;
+    }
+
+    .account-card.revealed .account-number {
+      display: block;
+    }
+
+    .closing {
+      min-height: 58svh;
+      display: grid;
+      align-content: center;
+      text-align: center;
+      background: var(--black);
+      color: #fff;
+    }
+
+    .closing p {
+      margin: 18px auto 0;
+      max-width: 310px;
+      color: rgba(255, 255, 255, .68);
+      word-break: keep-all;
+    }
+
+    .closing .big {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 58px;
+      line-height: .92;
+      color: #fff;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      z-index: 10;
+      transform: translate(-50%, 80px);
+      opacity: 0;
+      min-width: 220px;
+      padding: 12px 16px;
+      background: rgba(13, 13, 12, .92);
+      color: #fff;
+      text-align: center;
+      font-size: 14px;
+      transition: .24s ease;
+      pointer-events: none;
+    }
+
+    .toast.show {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    @media (max-width: 360px) {
+      .hero { padding-left: 15px; padding-right: 15px; }
+      h1 { font-size: 56px; }
+      section { padding-left: 18px; padding-right: 18px; }
+      .gallery .kicker, .gallery h2 { padding-left: 18px; padding-right: 18px; }
+      .actions { grid-template-columns: 1fr; }
+      .date-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <nav class="nav" aria-label="청첩장 메뉴">
+        <span class="mark">M · Y</span>
+        <span>Wedding Invitation</span>
+      </nav>
+
+      <div class="hero-center">
+        <p class="eyebrow">Non-typical love scene</p>
+        <h1>Minsu<br>Yujin</h1>
+      </div>
+
+      <div class="hero-bottom">
+        <div class="hero-meta">
+          <div>
+            <strong>황민수 · 서유진</strong>
+            <p>2026.08.29 SAT 18:00<br>Louisvis Convention B1</p>
+          </div>
+          <span class="scroll">Scroll</span>
+        </div>
+        <div class="actions">
+          <a href="#location">Map</a>
+          <button type="button" id="shareBtn">Share</button>
+          <button type="button" id="calendarBtn">Save</button>
+        </div>
+      </div>
+    </header>
+
+    <section class="intro">
+      <p class="kicker">Invitation</p>
+      <h2>Our own<br>scene begins</h2>
+      <p class="lead">
+        서로의 가장 좋은 계절이 되어준 두 사람이 이제 하나의 장면을 함께 시작합니다.
+        소중한 분들을 모시고 조용하지만 깊은 약속을 나누려 합니다.
+        함께 자리하시어 저희의 시작을 따뜻하게 축복해 주세요.
+      </p>
+      <div class="names">
+        <span>황민수</span>
+        <i></i>
+        <span>서유진</span>
+      </div>
+    </section>
+
+    <section class="date-band">
+      <p class="kicker">The day</p>
+      <div class="date-row">
+        <div class="date-num">08<br>29</div>
+        <p>
+          2026년 8월 29일 토요일<br>
+          저녁 6시<br>
+          루이비스컨벤션 B1층
+        </p>
+      </div>
+      <div class="count-grid" aria-label="예식까지 남은 시간">
+        <div class="count"><strong id="days">0</strong><span>Days</span></div>
+        <div class="count"><strong id="hours">0</strong><span>Hours</span></div>
+        <div class="count"><strong id="minutes">0</strong><span>Min</span></div>
+        <div class="count"><strong id="seconds">0</strong><span>Sec</span></div>
+      </div>
+    </section>
+
+    <section class="gallery">
+      <p class="kicker">Gallery</p>
+      <h2>Captured<br>moments</h2>
+      <div class="photo-stack">
+        <div class="photo"></div>
+        <div class="photo small"></div>
+        <div class="photo small"></div>
+      </div>
+    </section>
+
+    <section class="location" id="location">
+      <p class="kicker">Location</p>
+      <h2>Louisvis<br>Convention</h2>
+      <div class="info">
+        <div class="info-row">
+          <b>Date</b>
+          <p>2026년 8월 29일 토요일 저녁 6시</p>
+        </div>
+        <div class="info-row">
+          <b>Place</b>
+          <p>서울 송파구 법원로9길 26<br>H비즈니스파크 D동 루이비스컨벤션 B1층</p>
+        </div>
+      </div>
+      <div class="solid-actions">
+        <a href="https://naver.me/Gctrli34" target="_blank" rel="noreferrer">Naver Map</a>
+        <button type="button" class="ghost" id="addressBtn">Copy Address</button>
+      </div>
+    </section>
+
+    <section class="account">
+      <p class="kicker">For heart</p>
+      <h2>Thankful<br>mind</h2>
+      <p class="lead">멀리서 전해주시는 마음도 감사히 간직하겠습니다.</p>
+      <div class="account-card">
+        <div>
+          <p>신부 서유진 · 기업은행</p>
+          <strong class="account-number">01077576248</strong>
+        </div>
+        <button type="button" class="copy-btn" id="accountBtn" data-copy="01077576248">View</button>
+      </div>
+    </section>
+
+    <section class="closing">
+      <p class="big">Thank<br>you</p>
+      <p>귀한 걸음으로 함께해 주시는 마음, 오래도록 잊지 않겠습니다.</p>
+    </section>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    const weddingDate = new Date("2026-08-29T18:00:00+09:00");
+    const address = "서울 송파구 법원로9길 26 H비즈니스파크 D동 루이비스컨벤션 B1층";
+    const toast = document.querySelector("#toast");
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      window.clearTimeout(showToast.timer);
+      showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 1800);
+    }
+
+    function setCountdown() {
+      const remain = Math.max(0, weddingDate.getTime() - Date.now());
+      const day = Math.floor(remain / 86400000);
+      const hour = Math.floor((remain % 86400000) / 3600000);
+      const minute = Math.floor((remain % 3600000) / 60000);
+      const second = Math.floor((remain % 60000) / 1000);
+
+      document.querySelector("#days").textContent = day;
+      document.querySelector("#hours").textContent = String(hour).padStart(2, "0");
+      document.querySelector("#minutes").textContent = String(minute).padStart(2, "0");
+      document.querySelector("#seconds").textContent = String(second).padStart(2, "0");
+    }
+
+    async function copyText(text, message) {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast(message);
+      } catch {
+        showToast("복사를 사용할 수 없습니다");
+      }
+    }
+
+    document.querySelector("#addressBtn").addEventListener("click", () => {
+      copyText(address, "주소가 복사되었습니다");
+    });
+
+    document.querySelectorAll("[data-copy]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const card = button.closest(".account-card");
+        if (card && !card.classList.contains("revealed")) {
+          card.classList.add("revealed");
+          button.textContent = "Copy";
+          showToast("계좌번호가 표시되었습니다");
+          return;
+        }
+
+        copyText(button.dataset.copy, "계좌번호가 복사되었습니다");
+      });
+    });
+
+    document.querySelector("#shareBtn").addEventListener("click", async () => {
+      const data = {
+        title: "황민수 · 서유진 Wedding Invitation",
+        text: "2026년 8월 29일 토요일 저녁 6시, 루이비스컨벤션 B1층",
+        url: location.href
+      };
+
+      if (navigator.share) {
+        await navigator.share(data);
+      } else {
+        copyText(location.href, "링크가 복사되었습니다");
+      }
+    });
+
+    document.querySelector("#calendarBtn").addEventListener("click", () => {
+      const ics = [
+        "BEGIN:VCALENDAR",
+        "VERSION:2.0",
+        "PRODID:-//Minsu Yujin Wedding//KR",
+        "BEGIN:VEVENT",
+        "UID:minsu-yujin-wedding-20260829@example.com",
+        "DTSTAMP:20260616T000000Z",
+        "DTSTART:20260829T090000Z",
+        "DTEND:20260829T110000Z",
+        "SUMMARY:황민수 · 서유진 결혼식",
+        `LOCATION:${address}`,
+        "DESCRIPTION:루이비스컨벤션 B1층",
+        "END:VEVENT",
+        "END:VCALENDAR"
+      ].join("\r\n");
+
+      const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "minsu-yujin-wedding.ics";
+      link.click();
+      URL.revokeObjectURL(link.href);
+      showToast("캘린더 파일이 저장되었습니다");
+    });
+
+    setCountdown();
+    window.setInterval(setCountdown, 1000);
+  </script>
+</body>
+</html>
