@@ -638,6 +638,19 @@
       gap: 16px;
     }
 
+    .rsvp-open {
+      width: 100%;
+      min-height: 52px;
+      margin-top: 28px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: #fff;
+      font: inherit;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
     .field {
       display: grid;
       gap: 8px;
@@ -695,18 +708,6 @@
       color: #fff;
     }
 
-    .submit-btn {
-      min-height: 50px;
-      border: 1px solid var(--ink);
-      background: var(--ink);
-      color: #fff;
-      font: inherit;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      cursor: pointer;
-      text-align: center;
-    }
-
     .reveal {
       opacity: 0;
       transform: translateY(26px);
@@ -718,8 +719,16 @@
       transform: translateY(0);
     }
 
-    .reveal-soft {
-      transition-duration: 1.2s;
+    .submit-btn {
+      min-height: 50px;
+      border: 1px solid var(--ink);
+      background: var(--ink);
+      color: #fff;
+      font: inherit;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-align: center;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -739,6 +748,7 @@
         opacity: 1;
         transform: none;
       }
+
     }
 
     .account {
@@ -750,10 +760,7 @@
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
       padding: 22px 0;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 18px;
-      align-items: center;
+      display: block;
     }
 
     .account-card + .account-card {
@@ -761,12 +768,41 @@
       border-top: 0;
     }
 
+    .account-toggle {
+      width: 100%;
+      min-height: 44px;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      cursor: pointer;
+    }
+
+    .account-toggle::after {
+      content: "+";
+      color: var(--muted);
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .account-card.open .account-toggle::after {
+      content: "-";
+    }
+
+    .account-toggle p,
     .account-card p {
       margin: 0;
       color: var(--muted);
       font-size: 13px;
     }
 
+    .account-toggle strong,
     .account-card strong {
       display: block;
       margin-top: 3px;
@@ -774,17 +810,22 @@
       letter-spacing: .04em;
     }
 
+    .account-panel {
+      display: none;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .account-card.open .account-panel {
+      display: grid;
+      gap: 12px;
+    }
+
+    .account-copy,
     .copy-btn {
       min-width: 74px;
       min-height: 42px;
-    }
-
-    .account-number {
-      display: none;
-    }
-
-    .account-card.revealed .account-number {
-      display: block;
     }
 
     .closing {
@@ -800,6 +841,107 @@
     .closing p {
       margin: 18px auto 0;
       max-width: 310px;
+      color: var(--muted);
+      word-break: keep-all;
+    }
+
+    .footer-share {
+      width: 100%;
+      max-width: 360px;
+      margin: 32px auto 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .footer-share button {
+      min-height: 46px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      font-size: 12px;
+      letter-spacing: .08em;
+      cursor: pointer;
+    }
+
+    .footer-share .kakao-share {
+      border-color: #f1d84b;
+      background: #f7df52;
+      color: #231f20;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 30;
+      display: none;
+      padding: 22px;
+      background: rgba(15, 15, 14, .58);
+      overflow-y: auto;
+    }
+
+    .modal.open {
+      display: grid;
+      place-items: center;
+    }
+
+    .modal-panel {
+      width: min(100%, 460px);
+      max-height: calc(100svh - 44px);
+      overflow-y: auto;
+      background: #fbfbf8;
+      border: 1px solid var(--line);
+      padding: 26px 22px;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, .24);
+    }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .modal-head h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 400;
+    }
+
+    .modal-close {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .rsvp-success {
+      display: none;
+      padding: 34px 0 8px;
+      text-align: center;
+    }
+
+    .rsvp-success.show {
+      display: block;
+    }
+
+    .rsvp-success h3 {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 34px;
+      line-height: 1;
+      font-weight: 400;
+    }
+
+    .rsvp-success p {
+      margin: 12px 0 24px;
       color: var(--muted);
       word-break: keep-all;
     }
@@ -1067,10 +1209,11 @@
           </ul>
         </div>
         <div class="guide-item">
-          <b>자가용 이용 시</b>
+          <b>주차 안내</b>
           <ul>
             <li>내비게이션 이용 시<br>`루이비스컨벤션` 또는 주소 입력</li>
-            <li>웨딩홀 건물 H비즈니스파크 내<br>A, B동 C, D동 B1~B4층<br>1300여 대 주차 가능</li>
+            <li>건물 내 주차장 이용<br>H비즈니스파크 A, B동 C, D동<br>B1~B4층 1300여 대 주차 가능</li>
+            <li>하객 2시간 무료<br>이후 30분당 1,500원</li>
           </ul>
         </div>
       </div>
@@ -1105,7 +1248,65 @@
       <h2>Will you<br>join us?</h2>
       <p class="section-ko">[참석 여부]</p>
       <p class="lead">참석 여부와 축하 메시지를 남겨주시면<br>준비에 큰 도움이 됩니다.</p>
-      <form class="rsvp-form" name="wedding-rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <button type="button" class="rsvp-open" id="rsvpOpenBtn">RSVP 보내기</button>
+    </section>
+
+    <section class="account">
+      <p class="kicker">For heart</p>
+      <h2>Thankful<br>mind</h2>
+      <p class="section-ko">[마음 전하실 곳]</p>
+      <div class="account-card">
+        <button type="button" class="account-toggle" aria-expanded="false">
+          <span>
+            <p>신랑측 계좌번호</p>
+            <strong>황민수</strong>
+          </span>
+        </button>
+        <div class="account-panel">
+          <p>토스뱅크</p>
+          <strong>1000-7612-4133</strong>
+          <button type="button" class="account-copy copy-btn" data-copy="1000-7612-4133">복사</button>
+        </div>
+      </div>
+      <p class="lead">멀리서 전해주시는 마음도<br>감사히 간직하겠습니다.</p>
+      <div class="account-card">
+        <button type="button" class="account-toggle" aria-expanded="false">
+          <span>
+            <p>신부측 계좌번호</p>
+            <strong>서유진</strong>
+          </span>
+        </button>
+        <div class="account-panel">
+          <p>기업은행</p>
+          <strong>01077576248</strong>
+          <button type="button" class="account-copy copy-btn" data-copy="01077576248">복사</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <p class="big">Thank<br>you</p>
+      <p class="section-ko">[감사합니다]</p>
+      <a class="music-credit" href="https://incompetech.com/music/royalty-free/index.html?Search=Search&isrc=USUAN1600055" target="_blank" rel="noreferrer">Music: Instruments: Piano, Bass, Drums, Guitar</a>
+      <p>귀한 걸음으로 함께해 주시는 마음,<br>오래도록 잊지 않겠습니다.</p>
+      <div class="footer-share" aria-label="청첩장 공유">
+        <button type="button" class="kakao-share" id="kakaoShareBtn">카카오톡 공유</button>
+        <button type="button" id="linkShareBtn">링크 복사</button>
+      </div>
+    </section>
+  </main>
+
+  <aside class="modal" id="rsvpModal" aria-label="참석 여부 전달" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="rsvpTitle">
+      <div class="modal-head">
+        <div>
+          <p class="kicker">RSVP</p>
+          <h3 id="rsvpTitle">Will you<br>join us?</h3>
+          <p class="section-ko">[참석 여부]</p>
+        </div>
+        <button type="button" class="modal-close" id="rsvpCloseBtn" aria-label="참석 여부 닫기">×</button>
+      </div>
+      <form class="rsvp-form" id="rsvpForm" name="wedding-rsvp" method="POST" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="wedding-rsvp">
         <p hidden>
           <label>Don’t fill this out: <input name="bot-field"></label>
@@ -1147,36 +1348,14 @@
         </div>
         <button class="submit-btn" type="submit">참석 여부 보내기</button>
       </form>
-    </section>
-
-    <section class="account">
-      <p class="kicker">For heart</p>
-      <h2>Thankful<br>mind</h2>
-      <p class="section-ko">[마음 전하실 곳]</p>
-      <div class="account-card">
-        <div>
-          <p>신랑 황민수 · 토스뱅크</p>
-          <strong class="account-number">1000-7612-4133</strong>
-        </div>
-        <button type="button" class="copy-btn" data-copy="1000-7612-4133">보기</button>
+      <div class="rsvp-success" id="rsvpSuccess" aria-live="polite">
+        <p class="kicker">Thank you</p>
+        <h3>전달되었습니다</h3>
+        <p>소중한 답변 감사합니다.<br>청첩장으로 돌아갑니다.</p>
+        <button type="button" class="submit-btn" id="rsvpDoneBtn">청첩장으로 돌아가기</button>
       </div>
-      <p class="lead">멀리서 전해주시는 마음도<br>감사히 간직하겠습니다.</p>
-      <div class="account-card">
-        <div>
-          <p>신부 서유진 · 기업은행</p>
-          <strong class="account-number">01077576248</strong>
-        </div>
-        <button type="button" class="copy-btn" id="accountBtn" data-copy="01077576248">보기</button>
-      </div>
-    </section>
-
-    <section class="closing">
-      <p class="big">Thank<br>you</p>
-      <p class="section-ko">[감사합니다]</p>
-      <a class="music-credit" href="https://incompetech.com/music/royalty-free/index.html?Search=Search&isrc=USUAN1600055" target="_blank" rel="noreferrer">Music: Instruments: Piano, Bass, Drums, Guitar</a>
-      <p>귀한 걸음으로 함께해 주시는 마음,<br>오래도록 잊지 않겠습니다.</p>
-    </section>
-  </main>
+    </div>
+  </aside>
 
   <button type="button" class="music-toggle" id="musicBtn" aria-pressed="false" aria-label="배경 음악 재생">Music</button>
   <audio id="weddingAudio" src="assets/audio/wedding-music.mp3" preload="auto" loop></audio>
@@ -1196,6 +1375,8 @@
     const toast = document.querySelector("#toast");
     const musicBtn = document.querySelector("#musicBtn");
     const weddingAudio = document.querySelector("#weddingAudio");
+    let musicUserPaused = false;
+    let musicAutoTried = false;
 
     function showToast(message) {
       toast.textContent = message;
@@ -1204,26 +1385,52 @@
       showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 1800);
     }
 
+    function setMusicState(isPlaying) {
+      musicBtn.classList.toggle("is-playing", isPlaying);
+      musicBtn.setAttribute("aria-pressed", String(isPlaying));
+      musicBtn.textContent = isPlaying ? "Pause" : "Music";
+    }
+
+    async function playMusic(showMessage = false) {
+      weddingAudio.volume = 0.46;
+      await weddingAudio.play();
+      setMusicState(true);
+      if (showMessage) {
+        showToast("음악을 재생합니다");
+      }
+    }
+
     musicBtn.addEventListener("click", async () => {
       try {
         if (weddingAudio.paused) {
-          weddingAudio.volume = 0.46;
-          await weddingAudio.play();
-          musicBtn.classList.add("is-playing");
-          musicBtn.setAttribute("aria-pressed", "true");
-          musicBtn.textContent = "Pause";
-          showToast("음악을 재생합니다");
+          musicUserPaused = false;
+          await playMusic(true);
         } else {
+          musicUserPaused = true;
           weddingAudio.pause();
-          musicBtn.classList.remove("is-playing");
-          musicBtn.setAttribute("aria-pressed", "false");
-          musicBtn.textContent = "Music";
+          setMusicState(false);
           showToast("음악을 멈췄습니다");
         }
       } catch {
         showToast("다시 눌러 재생해 주세요");
       }
     });
+
+    async function tryAutoPlayMusic() {
+      if (musicAutoTried || musicUserPaused || !weddingAudio.paused) {
+        return;
+      }
+      musicAutoTried = true;
+
+      try {
+        await playMusic(false);
+      } catch {
+        setMusicState(false);
+      }
+    }
+
+    window.addEventListener("touchstart", tryAutoPlayMusic, { once: true, passive: true });
+    window.addEventListener("wheel", tryAutoPlayMusic, { once: true, passive: true });
 
     function setCountdown() {
       const remain = Math.max(0, weddingDate.getTime() - Date.now());
@@ -1251,16 +1458,16 @@
       copyText(address, "주소가 복사되었습니다");
     });
 
-    document.querySelectorAll("[data-copy]").forEach((button) => {
+    document.querySelectorAll(".account-toggle").forEach((button) => {
       button.addEventListener("click", () => {
         const card = button.closest(".account-card");
-        if (card && !card.classList.contains("revealed")) {
-          card.classList.add("revealed");
-          button.textContent = "복사";
-          showToast("계좌번호가 표시되었습니다");
-          return;
-        }
+        const isOpen = card.classList.toggle("open");
+        button.setAttribute("aria-expanded", String(isOpen));
+      });
+    });
 
+    document.querySelectorAll("[data-copy]").forEach((button) => {
+      button.addEventListener("click", () => {
         copyText(button.dataset.copy, "계좌번호가 복사되었습니다");
       });
     });
@@ -1311,20 +1518,41 @@
       if (event.key === "Escape" && lightbox.classList.contains("open")) {
         closeLightbox();
       }
+      if (event.key === "Escape" && rsvpModal.classList.contains("open")) {
+        closeRsvpModal();
+      }
     });
 
-    document.querySelector("#shareBtn").addEventListener("click", async () => {
-      const data = {
+    function getShareData() {
+      return {
         title: "황민수 · 서유진 Wedding Invitation",
         text: "2026년 8월 29일 토요일 18:00, 루이비스 문정 그레이스홀",
         url: location.href
       };
+    }
+
+    async function shareInvitation() {
+      const data = getShareData();
 
       if (navigator.share) {
         await navigator.share(data);
       } else {
         copyText(location.href, "링크가 복사되었습니다");
       }
+    }
+
+    document.querySelector("#shareBtn").addEventListener("click", shareInvitation);
+
+    document.querySelector("#kakaoShareBtn").addEventListener("click", async () => {
+      try {
+        await shareInvitation();
+      } catch {
+        copyText(location.href, "링크가 복사되었습니다");
+      }
+    });
+
+    document.querySelector("#linkShareBtn").addEventListener("click", () => {
+      copyText(location.href, "링크가 복사되었습니다");
     });
 
     document.querySelector("#calendarBtn").addEventListener("click", () => {
@@ -1356,8 +1584,64 @@
     setCountdown();
     window.setInterval(setCountdown, 1000);
 
-    document.querySelector(".rsvp-form").addEventListener("submit", () => {
-      showToast("참석 여부를 전송합니다");
+    const rsvpModal = document.querySelector("#rsvpModal");
+    const rsvpForm = document.querySelector("#rsvpForm");
+    const rsvpSuccess = document.querySelector("#rsvpSuccess");
+    let rsvpSuccessTimer;
+
+    function openRsvpModal() {
+      window.clearTimeout(rsvpSuccessTimer);
+      rsvpModal.classList.add("open");
+      rsvpModal.setAttribute("aria-hidden", "false");
+      rsvpForm.style.display = "";
+      rsvpSuccess.classList.remove("show");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeRsvpModal() {
+      rsvpModal.classList.remove("open");
+      rsvpModal.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+      window.clearTimeout(rsvpSuccessTimer);
+    }
+
+    document.querySelector("#rsvpOpenBtn").addEventListener("click", openRsvpModal);
+    document.querySelector("#rsvpCloseBtn").addEventListener("click", closeRsvpModal);
+    document.querySelector("#rsvpDoneBtn").addEventListener("click", closeRsvpModal);
+    rsvpModal.addEventListener("click", (event) => {
+      if (event.target === rsvpModal) {
+        closeRsvpModal();
+      }
+    });
+
+    rsvpForm.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const submitButton = rsvpForm.querySelector(".submit-btn");
+      submitButton.disabled = true;
+      submitButton.textContent = "전송 중";
+
+      try {
+        const body = new URLSearchParams(new FormData(rsvpForm)).toString();
+        const response = await fetch("/", {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body
+        });
+
+        if (!response.ok) {
+          throw new Error("RSVP submit failed");
+        }
+
+        rsvpForm.reset();
+        rsvpForm.style.display = "none";
+        rsvpSuccess.classList.add("show");
+        rsvpSuccessTimer = window.setTimeout(closeRsvpModal, 2200);
+      } catch {
+        showToast("전송에 실패했습니다. 잠시 후 다시 시도해 주세요.");
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = "참석 여부 보내기";
+      }
     });
 
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1378,7 +1662,7 @@
 
     if (!prefersReducedMotion) {
       const revealTargets = document.querySelectorAll(
-        ".info-row, .guide-item, .contact-card, .account-card, .field"
+        ".info-row, .guide-item, .contact-card, .account-card"
       );
       revealTargets.forEach((target) => {
         target.classList.add("reveal");
