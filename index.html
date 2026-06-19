@@ -559,6 +559,32 @@
       -webkit-user-drag: none;
     }
 
+    .lightbox-nav {
+      position: absolute;
+      top: 50%;
+      width: 42px;
+      height: 54px;
+      border: 1px solid rgba(255, 255, 255, .22);
+      background: rgba(255, 255, 255, .08);
+      color: #fff;
+      font: inherit;
+      font-size: 28px;
+      line-height: 1;
+      display: grid;
+      place-items: center;
+      transform: translateY(-50%);
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+    }
+
+    .lightbox-prev {
+      left: 14px;
+    }
+
+    .lightbox-next {
+      right: 14px;
+    }
+
     .lightbox-caption {
       min-height: 22px;
       color: rgba(255, 255, 255, .68);
@@ -1620,7 +1646,9 @@
       <span>사진 크게 보기</span>
       <button type="button" class="lightbox-close" id="lightboxClose" aria-label="사진 닫기">×</button>
     </div>
+    <button type="button" class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="이전 사진">‹</button>
     <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <button type="button" class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="다음 사진">›</button>
     <div class="lightbox-caption" id="lightboxCaption"></div>
   </aside>
 
@@ -1738,6 +1766,22 @@
     const lightbox = document.querySelector("#lightbox");
     const lightboxImg = document.querySelector("#lightboxImg");
     const lightboxCaption = document.querySelector("#lightboxCaption");
+    const lightboxPrev = document.querySelector("#lightboxPrev");
+    const lightboxNext = document.querySelector("#lightboxNext");
+    const galleryImages = Array.from(document.querySelectorAll(".feature-photo img, .photo-card img"));
+    let currentLightboxIndex = 0;
+    let lightboxTouchStartX = 0;
+    let lightboxTouchStartY = 0;
+    let lightboxTouchMoved = false;
+    let ignoreNextLightboxClick = false;
+
+    function showLightboxImage(index) {
+      currentLightboxIndex = (index + galleryImages.length) % galleryImages.length;
+      const image = galleryImages[currentLightboxIndex];
+      lightboxImg.src = image.currentSrc || image.src;
+      lightboxImg.alt = image.alt;
+      lightboxCaption.textContent = "";
+    }
 
     function closeLightbox() {
       lightbox.classList.remove("open");
@@ -1747,14 +1791,16 @@
       lightboxCaption.textContent = "";
     }
 
-    document.querySelectorAll(".feature-photo img, .photo-card img").forEach((image) => {
+    function moveLightbox(step) {
+      showLightboxImage(currentLightboxIndex + step);
+    }
+
+    galleryImages.forEach((image, index) => {
       image.setAttribute("draggable", "false");
       image.addEventListener("contextmenu", (event) => event.preventDefault());
       image.addEventListener("dragstart", (event) => event.preventDefault());
       image.addEventListener("click", () => {
-        lightboxImg.src = image.currentSrc || image.src;
-        lightboxImg.alt = image.alt;
-        lightboxCaption.textContent = "";
+        showLightboxImage(index);
         lightbox.classList.add("open");
         lightbox.setAttribute("aria-hidden", "false");
       });
@@ -1771,14 +1817,58 @@
     });
 
     document.querySelector("#lightboxClose").addEventListener("click", closeLightbox);
+    lightboxPrev.addEventListener("click", (event) => {
+      event.stopPropagation();
+      moveLightbox(-1);
+    });
+    lightboxNext.addEventListener("click", (event) => {
+      event.stopPropagation();
+      moveLightbox(1);
+    });
     lightbox.addEventListener("click", (event) => {
+      if (ignoreNextLightboxClick) {
+        ignoreNextLightboxClick = false;
+        return;
+      }
+
       if (event.target === lightbox || event.target === lightboxImg) {
+        closeLightbox();
+      }
+    });
+    lightbox.addEventListener("touchstart", (event) => {
+      const touch = event.touches[0];
+      lightboxTouchStartX = touch.clientX;
+      lightboxTouchStartY = touch.clientY;
+      lightboxTouchMoved = false;
+    }, { passive: true });
+    lightbox.addEventListener("touchmove", (event) => {
+      const touch = event.touches[0];
+      const diffX = touch.clientX - lightboxTouchStartX;
+      const diffY = touch.clientY - lightboxTouchStartY;
+      if (Math.abs(diffX) > 12 || Math.abs(diffY) > 12) {
+        lightboxTouchMoved = true;
+      }
+    }, { passive: true });
+    lightbox.addEventListener("touchend", (event) => {
+      const touch = event.changedTouches[0];
+      const diffX = touch.clientX - lightboxTouchStartX;
+      const diffY = touch.clientY - lightboxTouchStartY;
+      if (Math.abs(diffX) > 54 && Math.abs(diffX) > Math.abs(diffY)) {
+        ignoreNextLightboxClick = true;
+        moveLightbox(diffX < 0 ? 1 : -1);
+      } else if (!lightboxTouchMoved && event.target === lightboxImg) {
         closeLightbox();
       }
     });
     window.addEventListener("keydown", (event) => {
       if (event.key === "Escape" && lightbox.classList.contains("open")) {
         closeLightbox();
+      }
+      if (event.key === "ArrowLeft" && lightbox.classList.contains("open")) {
+        moveLightbox(-1);
+      }
+      if (event.key === "ArrowRight" && lightbox.classList.contains("open")) {
+        moveLightbox(1);
       }
       if (event.key === "Escape" && rsvpModal.classList.contains("open")) {
         closeRsvpModal();
