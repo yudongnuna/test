@@ -1395,7 +1395,6 @@
         <div class="guide-item">
           <b>셔틀버스 이용 시</b>
           <p>8호선 문정역 4번 출구 앞<br>셔틀버스 10분 배차 운행</p>
-          <p class="guide-note">수서역은 셔틀버스가 없습니다.</p>
         </div>
         <div class="guide-item">
           <b>버스 이용 시</b>
@@ -1412,7 +1411,7 @@
           <b>주차 안내</b>
           <ul>
             <li>내비게이션 이용 시<br>`루이비스컨벤션` 또는 주소 입력</li>
-            <li>건물 내 주차장 이용<br>H비즈니스파크 A, B동 C, D동<br>B1~B4층 1300여 대 주차 가능</li>
+            <li>건물 내 주차장 이용</li>
             <li>하객 2시간 무료<br>이후 30분당 1,500원</li>
           </ul>
         </div>
@@ -1702,10 +1701,9 @@
       image.addEventListener("contextmenu", (event) => event.preventDefault());
       image.addEventListener("dragstart", (event) => event.preventDefault());
       image.addEventListener("click", () => {
-        const caption = image.closest("figure")?.querySelector("figcaption")?.textContent || image.alt;
         lightboxImg.src = image.currentSrc || image.src;
         lightboxImg.alt = image.alt;
-        lightboxCaption.textContent = caption;
+        lightboxCaption.textContent = "";
         lightbox.classList.add("open");
         lightbox.setAttribute("aria-hidden", "false");
       });
