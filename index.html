@@ -1710,7 +1710,7 @@
 
     document.querySelector("#lightboxClose").addEventListener("click", closeLightbox);
     lightbox.addEventListener("click", (event) => {
-      if (event.target === lightbox) {
+      if (event.target === lightbox || event.target === lightboxImg) {
         closeLightbox();
       }
     });
