@@ -1836,6 +1836,36 @@
       return googleFormAction && Object.values(googleFormEntries).every(Boolean);
     }
 
+    function submitToGoogleForm(formData) {
+      const iframeName = "hidden-google-form-submit";
+      let iframe = document.querySelector(`iframe[name="${iframeName}"]`);
+
+      if (!iframe) {
+        iframe = document.createElement("iframe");
+        iframe.name = iframeName;
+        iframe.style.display = "none";
+        document.body.appendChild(iframe);
+      }
+
+      const form = document.createElement("form");
+      form.method = "POST";
+      form.action = googleFormAction;
+      form.target = iframeName;
+      form.style.display = "none";
+
+      Object.entries(googleFormEntries).forEach(([name, entry]) => {
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = entry;
+        input.value = formData.get(name) || "";
+        form.appendChild(input);
+      });
+
+      document.body.appendChild(form);
+      form.submit();
+      form.remove();
+    }
+
     rsvpForm.addEventListener("submit", async (event) => {
       event.preventDefault();
 
@@ -1851,20 +1881,12 @@
 
       const submitButton = rsvpForm.querySelector(".submit-btn");
       const formData = new FormData(rsvpForm);
-      const googleData = new FormData();
-      Object.entries(googleFormEntries).forEach(([name, entry]) => {
-        googleData.append(entry, formData.get(name) || "");
-      });
 
       submitButton.disabled = true;
       submitButton.textContent = "전송 중";
 
       try {
-        await fetch(googleFormAction, {
-          method: "POST",
-          mode: "no-cors",
-          body: googleData
-        });
+        submitToGoogleForm(formData);
 
         rsvpForm.reset();
         rsvpForm.style.display = "none";
