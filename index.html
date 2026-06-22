@@ -795,15 +795,15 @@
     .parent-contact-group {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
+      gap: 8px;
       border-top: 1px solid var(--line);
-      padding-top: 16px;
+      padding-top: 14px;
     }
 
     .parent-contact-group h3 {
       grid-column: 1 / -1;
-      margin: 0 0 12px;
-      font-size: 15px;
+      margin: 0 0 8px;
+      font-size: 14px;
       font-weight: 600;
       letter-spacing: .06em;
     }
@@ -811,9 +811,9 @@
     .parent-contact-item {
       display: grid;
       grid-template-columns: 1fr;
-      gap: 10px;
+      gap: 8px;
       min-width: 0;
-      padding: 14px 12px;
+      padding: 12px 10px;
       border: 1px solid var(--line);
     }
 
@@ -824,20 +824,28 @@
     .parent-contact-item p {
       margin: 0;
       color: var(--muted);
-      font-size: 12px;
+      font-size: 11px;
     }
 
     .parent-contact-item strong {
       display: block;
       margin-top: 2px;
       color: var(--ink);
-      font-size: 16px;
+      font-size: 14px;
       letter-spacing: .04em;
     }
 
-    .parent-contact-item .mini-btn {
+    .parent-contact-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .parent-contact-actions .mini-btn {
       width: 100%;
-      min-height: 36px;
+      min-width: 0;
+      min-height: 32px;
+      font-size: 11px;
     }
 
     .mini-btn {
@@ -1558,14 +1566,20 @@
               <p>아버지</p>
               <strong>황석준</strong>
             </div>
-            <a class="mini-btn" href="tel:01049298272">전화</a>
+            <div class="parent-contact-actions">
+              <a class="mini-btn" href="tel:01049298272">전화</a>
+              <a class="mini-btn" href="sms:01049298272">문자</a>
+            </div>
           </div>
           <div class="parent-contact-item">
             <div>
               <p>어머니</p>
               <strong>김진원</strong>
             </div>
-            <a class="mini-btn" href="tel:01077748272">전화</a>
+            <div class="parent-contact-actions">
+              <a class="mini-btn" href="tel:01077748272">전화</a>
+              <a class="mini-btn" href="sms:01077748272">문자</a>
+            </div>
           </div>
         </div>
         <div class="parent-contact-group">
@@ -1575,14 +1589,20 @@
               <p>아버지</p>
               <strong>서동식</strong>
             </div>
-            <a class="mini-btn" href="tel:01038934887">전화</a>
+            <div class="parent-contact-actions">
+              <a class="mini-btn" href="tel:01038934887">전화</a>
+              <a class="mini-btn" href="sms:01038934887">문자</a>
+            </div>
           </div>
           <div class="parent-contact-item">
             <div>
               <p>어머니</p>
               <strong>황기숙</strong>
             </div>
-            <a class="mini-btn" href="tel:01067711913">전화</a>
+            <div class="parent-contact-actions">
+              <a class="mini-btn" href="tel:01067711913">전화</a>
+              <a class="mini-btn" href="sms:01067711913">문자</a>
+            </div>
           </div>
         </div>
       </div>
